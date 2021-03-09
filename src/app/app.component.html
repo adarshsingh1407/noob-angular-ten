@@ -5,7 +5,12 @@
     </div>
     <app-create-server (svrAdded)="onServerAdded($event)"></app-create-server>
     <div class="col-12" *ngFor="let serverItem of servers">
-      <app-server [serverDetail]="serverItem"></app-server>
+      <app-server [serverDetail]="serverItem">
+        <p [ngStyle]="{backgroundColor: serverItem.status === 'online' ? 'green' : 'red'}"
+          [ngClass]="{online: serverItem.status === 'online'}">
+          Server Name: {{serverItem.name}}, Status: {{serverItem.status}}
+        </p>
+      </app-server>
     </div>
     <div class="col-12"><app-warning-alert></app-warning-alert></div>
     <div class="col-12"><app-error-alert></app-error-alert></div>
