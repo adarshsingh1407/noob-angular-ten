@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-create-server',
@@ -8,16 +8,17 @@ import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 export class CreateServerComponent implements OnInit{
   // tslint:disable-next-line: no-output-rename
   @Output('svrAdded') serverAdded =  new EventEmitter<{serverName: string, serverStatus: string}>();
-  newServerName = '';
+  @ViewChild('serverNameInput', {static: true}) serverNameInput: ElementRef;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // static is required only when serverNameInput is accessed in ngOnInit
+  }
 
   onCreateServer(): void {
-    const serverName = this.newServerName;
+    const serverName = this.serverNameInput.nativeElement.value;
     const serverStatus = Math.random() > 0.5 ? 'online' : 'offline';
-    this.newServerName = '';
     this.serverAdded.emit({serverName, serverStatus});
   }
 
