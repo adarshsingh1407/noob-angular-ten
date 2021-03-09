@@ -3,11 +3,18 @@
     <div class="col-12">
       Noob Angular Ten
     </div>
-    <div class="col-12">
-      Welcome {{name}}
+    <div class="col-8">
+      <label>Add New Server</label>
+      <input type="text" (input)="onUpdateServerName($event)" />
     </div>
-    <div class="col-12">
-      <input type="text" [(ngModel)]="name" />
+    <div class="col-4">
+      <button type="button" class="btn btn-primary" (click)="onCreateServer()">Add Server</button>
+    </div>
+    <div class="col-12" *ngFor="let server of servers">
+      <p
+      [ngStyle]="{backgroundColor: server.status === 'online' ? 'green' : 'red'}"
+      [ngClass]="{online: server.status === 'online'}"
+      >Server Name: {{server.name}}, Status: {{server.status}}</p>
     </div>
     <div class="col-12"><app-warning-alert></app-warning-alert></div>
     <div class="col-12"><app-error-alert></app-error-alert></div>
