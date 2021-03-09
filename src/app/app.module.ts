@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ErrorAlertComponent } from './error-alert/error-alert.component';
 import { ServerComponent } from './server/server.component';
 import { CreateServerComponent } from './server/create-server/create-server.component';
+import { HighlightedTextDirective } from './directives/highlighted-text.directive';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CreateServerComponent } from './server/create-server/create-server.comp
     ErrorAlertComponent,
     WarningAlertComponent,
     ServerComponent,
-    CreateServerComponent
+    CreateServerComponent,
+    HighlightedTextDirective
   ],
   imports: [
     BrowserModule,
