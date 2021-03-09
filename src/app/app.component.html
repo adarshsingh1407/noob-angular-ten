@@ -7,7 +7,7 @@
     <div class="col-12">
       <button type="button" class="btn btn-warning" (click)="changeFirstServer()">Change 1st server</button>
     </div>
-    <div class="col-12" appHighlightedText>Servers List</div>
+    <div class="col-12" appHighlightedText [defaultColor]="'yellow'" [bgColor]="'red'">Servers List</div>
     <div class="col-12" *ngFor="let serverItem of servers">
       <app-server [serverName]="serverItem.name" [serverStatus]="serverItem.status">
       </app-server>
