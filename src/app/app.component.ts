@@ -10,10 +10,6 @@ export class AppComponent {
   servers = [];
   newServerName = '';
 
-  onUpdateServerName = (event: Event) => {
-    this.newServerName = ( event.target as HTMLInputElement).value;
-  }
-
   onCreateServer = () => {
     this.servers.push({name: this.newServerName, status: Math.random() > 0.5 ? 'online' : 'offline'});
     this.newServerName = '';
