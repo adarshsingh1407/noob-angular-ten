@@ -3,15 +3,9 @@
     <div class="col-12">
       Noob Angular Ten
     </div>
-    <div class="col-8">
-      <label>Add New Server</label>
-      <input type="text" [(ngModel)]="newServerName" />
-    </div>
-    <div class="col-4">
-      <button type="button" class="btn btn-primary" (click)="onCreateServer()">Add Server</button>
-    </div>
-    <div class="col-12" *ngFor="let server of servers">
-      <app-server [server]="server"></app-server>
+    <app-create-server (svrAdded)="onServerAdded($event)"></app-create-server>
+    <div class="col-12" *ngFor="let serverItem of servers">
+      <app-server [serverDetail]="serverItem"></app-server>
     </div>
     <div class="col-12"><app-warning-alert></app-warning-alert></div>
     <div class="col-12"><app-error-alert></app-error-alert></div>

@@ -8,10 +8,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'noob-angular-ten';
   servers = [];
-  newServerName = '';
 
-  onCreateServer = () => {
-    this.servers.push({name: this.newServerName, status: Math.random() > 0.5 ? 'online' : 'offline'});
-    this.newServerName = '';
+  onServerAdded(newServer: {serverName: string, serverStatus: string}): void {
+    this.servers.push({name: newServer.serverName, status: newServer.serverStatus});
   }
+
 }
