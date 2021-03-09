@@ -13,4 +13,8 @@ export class AppComponent {
     this.servers.push({name: newServer.serverName, status: newServer.serverStatus});
   }
 
+  changeFirstServer(): void {
+    this.servers[0].name = `Updated Server Name: ${new Date()}`;
+  }
+
 }

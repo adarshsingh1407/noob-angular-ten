@@ -4,12 +4,11 @@
       Noob Angular Ten
     </div>
     <app-create-server (svrAdded)="onServerAdded($event)"></app-create-server>
+    <div class="col-12">
+      <button type="button" class="btn btn-warning" (click)="changeFirstServer()">Change 1st server</button>
+    </div>
     <div class="col-12" *ngFor="let serverItem of servers">
-      <app-server [serverDetail]="serverItem">
-        <p [ngStyle]="{backgroundColor: serverItem.status === 'online' ? 'green' : 'red'}"
-          [ngClass]="{online: serverItem.status === 'online'}">
-          Server Name: {{serverItem.name}}, Status: {{serverItem.status}}
-        </p>
+      <app-server [serverName]="serverItem.name" [serverStatus]="serverItem.status">
       </app-server>
     </div>
     <div class="col-12"><app-warning-alert></app-warning-alert></div>

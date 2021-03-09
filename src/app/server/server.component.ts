@@ -1,18 +1,24 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-server',
   templateUrl: './server.component.html',
-  styleUrls: ['./server.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./server.component.css']
 })
-export class ServerComponent implements OnInit {
+export class ServerComponent implements OnInit, OnChanges {
   // tslint:disable-next-line: no-input-rename
-  @Input('serverDetail') server: {name: string, status: string};
+  @Input('serverName') name: string;
+  // tslint:disable-next-line: no-input-rename
+  @Input('serverStatus') status: string;
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log('ngOnInit called with', this.name, this.status);
+  }
+
+  ngOnChanges(simpleChanges: SimpleChanges): void {
+    console.log({simpleChanges});
   }
 
 }

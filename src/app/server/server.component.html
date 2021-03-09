@@ -1,1 +1,4 @@
-<ng-content></ng-content>
+<p [ngStyle]="{backgroundColor: status === 'online' ? 'green' : 'red'}"
+  [ngClass]="{online: status === 'online'}">
+  Server Name: {{name}}, Status: {{status}}
+</p>
