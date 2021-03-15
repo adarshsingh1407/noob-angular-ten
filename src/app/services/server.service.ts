@@ -1,3 +1,4 @@
+import { LoggingService } from './logging.service';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -7,7 +8,7 @@ export class ServerService {
 
   servers: {name: string, status: string}[] = [];
 
-  constructor() {
+  constructor(private loggingService: LoggingService) {
     this.servers.push({
       name: '1',
       status: 'online'
@@ -19,6 +20,8 @@ export class ServerService {
   }
 
   changeFirstServerName(): void {
-    this.servers[0].name = `Updated Server Name: ${new Date()}`;
+    const newName = `New Name: ${new Date()}`;
+    this.servers[0].name = newName;
+    this.loggingService.info(`Updated Server Name: ${newName}`);
   }
 }
