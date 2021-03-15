@@ -1,25 +1,30 @@
-import { Component } from '@angular/core';
-import { LogginServiceService } from './services/loggin-service.service';
+import { Component, OnInit } from '@angular/core';
+import { LoggingService } from './services/logging.service';
+import { ServerService } from './services/server.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [LogginServiceService]
+  providers: [LoggingService, ServerService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'noob-angular-ten';
-  servers = [];
   activeBrandId = 'TCP';
+  servers: {name: string, status: string}[] = [];
 
-  constructor(private loggingService: LogginServiceService) {}
+  constructor(private loggingService: LoggingService, private serverService: ServerService) {}
+
+  ngOnInit() {
+    this.servers = this.serverService.servers;
+  }
 
   onServerAdded(newServer: {serverName: string, serverStatus: string}): void {
-    this.servers.push({name: newServer.serverName, status: newServer.serverStatus});
+    this.serverService.addServer({name: newServer.serverName, status: newServer.serverStatus});
   }
 
   changeFirstServer(): void {
-    this.servers[0].name = `Updated Server Name: ${new Date()}`;
+    this.serverService.changeFirstServerName();
   }
 
    handleServerSelected(selectedServerIndex: number): void {

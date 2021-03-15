@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class LogginServiceService {
+export class LoggingService {
 
   info(message: string): void {
     console.info(message);
