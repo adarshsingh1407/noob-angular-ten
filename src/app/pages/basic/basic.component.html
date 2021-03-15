@@ -1,0 +1,20 @@
+<app-create-server (svrAdded)="onServerAdded($event)"></app-create-server>
+<div class="col-12">
+  <button type="button" class="btn btn-warning" (click)="changeFirstServer()">Change 1st server</button>
+</div>
+<div class="col-12" appHighlightedText [defaultColor]="'yellow'" [bgColor]="'red'">Servers List</div>
+<div class="col-12" *ngFor="let serverItem of servers; index as i">
+  <app-server [serverIndex]="i" (serverSelected)="handleServerSelected($event)">
+  </app-server>
+</div>
+<div [ngSwitch]="activeBrandId">
+  <p *ngSwitchCase="'TCP'">TCP</p>
+  <p *ngSwitchCase="'GYM'">GYM</p>
+  <p *ngSwitchDefault>NA</p>
+</div>
+<div class="col-12">
+  <app-warning-alert></app-warning-alert>
+</div>
+<div class="col-12">
+  <app-error-alert></app-error-alert>
+</div>

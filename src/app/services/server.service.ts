@@ -1,10 +1,11 @@
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { LoggingService } from './logging.service';
-import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServerService {
+  @Output() serverSelected = new EventEmitter<number>();
 
   servers: {name: string, status: string}[] = [];
 
@@ -15,7 +16,7 @@ export class ServerService {
     });
   }
 
-  addServer(newServer): void {
+  addServer(newServer: {name: string, status: string}): void {
     this.servers.push(newServer);
   }
 

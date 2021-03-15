@@ -8,6 +8,26 @@ import { ErrorAlertComponent } from './error-alert/error-alert.component';
 import { ServerComponent } from './server/server.component';
 import { CreateServerComponent } from './server/create-server/create-server.component';
 import { HighlightedTextDirective } from './directives/highlighted-text.directive';
+import { UsersComponent } from './pages/users/users.component';
+import { FeaturesComponent } from './pages/features/features.component';
+import { HomeComponent } from './pages/home/home.component';
+import { RouterModule } from '@angular/router';
+import { HeaderComponent } from './common/header/header.component';
+import { BasicComponent } from './pages/basic/basic.component';
+
+const appRoutes = [{
+  path: '',
+  component: HomeComponent
+}, {
+  path: 'users',
+  component: UsersComponent
+}, {
+  path: 'features',
+  component: FeaturesComponent
+}, {
+  path: 'basic',
+  component: BasicComponent
+}];
 
 @NgModule({
   declarations: [
@@ -16,11 +36,17 @@ import { HighlightedTextDirective } from './directives/highlighted-text.directiv
     WarningAlertComponent,
     ServerComponent,
     CreateServerComponent,
-    HighlightedTextDirective
+    HighlightedTextDirective,
+    UsersComponent,
+    FeaturesComponent,
+    HomeComponent,
+    HeaderComponent,
+    BasicComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent]

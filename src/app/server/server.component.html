@@ -1,6 +1,6 @@
-<p [ngStyle]="{backgroundColor: status === 'online' ? 'green' : 'red'}"
-  [ngClass]="{online: status === 'online'}"
+<p [ngStyle]="{backgroundColor: server.status === 'online' ? 'green' : 'red'}"
+  [ngClass]="{online: server.status === 'online'}"
   (click)="handleClickOnServerDetail(serverIndex)"
   >
-  Server Name: {{name}}, Status: {{status}}
+  Server Name: {{server.name}}, Status: {{server.status}}
 </p>
