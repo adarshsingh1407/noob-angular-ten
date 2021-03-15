@@ -1,0 +1,4 @@
+<p>user works!</p>
+<p>ID: {{user.id}}, Name: {{user.name}}</p>
+<a *ngIf="user.id === '1'" [routerLink]="['/users', 2]" [queryParams]="{name: 'Nitasha'}">User: Nitasha</a>
+<a *ngIf="user.id === '2'" [routerLink]="['/users', 1]" [queryParams]="{name: 'Adarsh'}">User: Adarsh</a>

@@ -13,8 +13,8 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goToUserN(n: number): void {
-    this.router.navigate([`user/${n}`], {relativeTo: this.route});
+  goToUserN(id: number, name: string): void {
+    this.router.navigate([id], {relativeTo: this.route, queryParams: {name}});
   }
 
 }

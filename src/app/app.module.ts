@@ -14,6 +14,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './common/header/header.component';
 import { BasicComponent } from './pages/basic/basic.component';
+import { UserComponent } from './pages/user/user.component';
 
 const appRoutes = [{
   path: '',
@@ -21,6 +22,9 @@ const appRoutes = [{
 }, {
   path: 'users',
   component: UsersComponent
+}, {
+  path: 'users/:id',
+  component: UserComponent
 }, {
   path: 'features',
   component: FeaturesComponent
@@ -41,7 +45,8 @@ const appRoutes = [{
     FeaturesComponent,
     HomeComponent,
     HeaderComponent,
-    BasicComponent
+    BasicComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
