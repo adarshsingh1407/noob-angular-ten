@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'noob-angular-ten';
   servers = [];
+  activeBrandId = 'TCP';
 
   onServerAdded(newServer: {serverName: string, serverStatus: string}): void {
     this.servers.push({name: newServer.serverName, status: newServer.serverStatus});

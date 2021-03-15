@@ -12,6 +12,11 @@
       <app-server [serverName]="serverItem.name" [serverStatus]="serverItem.status">
       </app-server>
     </div>
+    <div [ngSwitch]="activeBrandId">
+      <p *ngSwitchCase="'TCP'">TCP</p>
+      <p *ngSwitchCase="'GYM'">GYM</p>
+      <p *ngSwitchDefault>NA</p>
+    </div>
     <div class="col-12"><app-warning-alert></app-warning-alert></div>
     <div class="col-12"><app-error-alert></app-error-alert></div>
   </div>
