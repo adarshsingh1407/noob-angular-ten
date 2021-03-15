@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { AfterContentInit, AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { PostService } from './../../services/post.service';
 
 @Component({
   selector: 'app-create-user',
@@ -10,7 +12,7 @@ export class CreateUserComponent implements OnInit {
   genders = ['male', 'female'];
   createUserForm: FormGroup;
 
-  constructor() {
+  constructor(private postService: PostService) {
   }
 
   ngOnInit(): void {
@@ -23,7 +25,18 @@ export class CreateUserComponent implements OnInit {
   }
 
   handleFormSubmit(): void {
-    console.log(this.createUserForm)
+    console.log(this.createUserForm);
+    const {
+      value: {
+        email,password, gender, newsletter
+      }
+    } = this.createUserForm;
+    const post = {
+      title: email,
+      body: `password: ${password}, gender: ${gender}, newsletter: ${newsletter}`,
+      userId: email,
+    };
+    this.postService.createPost(post).subscribe(res => console.log(res));
   }
 
 }
