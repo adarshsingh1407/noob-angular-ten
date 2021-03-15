@@ -8,8 +8,8 @@
       <button type="button" class="btn btn-warning" (click)="changeFirstServer()">Change 1st server</button>
     </div>
     <div class="col-12" appHighlightedText [defaultColor]="'yellow'" [bgColor]="'red'">Servers List</div>
-    <div class="col-12" *ngFor="let serverItem of servers">
-      <app-server [serverName]="serverItem.name" [serverStatus]="serverItem.status">
+    <div class="col-12" *ngFor="let serverItem of servers; index as i">
+      <app-server [serverIndex]="i" [serverName]="serverItem.name" [serverStatus]="serverItem.status" (serverSelected)="handleServerSelected($event)">
       </app-server>
     </div>
     <div [ngSwitch]="activeBrandId">

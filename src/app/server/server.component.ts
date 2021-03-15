@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-server',
@@ -7,9 +7,13 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 })
 export class ServerComponent implements OnInit, OnChanges {
   // tslint:disable-next-line: no-input-rename
+  @Input() serverIndex: number;
+  // tslint:disable-next-line: no-input-rename
   @Input('serverName') name: string;
   // tslint:disable-next-line: no-input-rename
   @Input('serverStatus') status: string;
+
+  @Output() serverSelected = new EventEmitter<number>();
 
   constructor() { }
 
@@ -19,6 +23,10 @@ export class ServerComponent implements OnInit, OnChanges {
 
   ngOnChanges(simpleChanges: SimpleChanges): void {
     console.log({simpleChanges});
+  }
+
+  handleClickOnServerDetail(selectedServerIndex: number): void {
+    this.serverSelected.emit(selectedServerIndex);
   }
 
 }
