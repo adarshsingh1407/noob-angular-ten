@@ -1,5 +1,5 @@
 import { AfterContentInit, AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-user',
@@ -7,23 +7,23 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent implements OnInit {
-  @ViewChild('createUserForm') createUserForm: NgForm;
-  defaultNewsletter = true;
   genders = ['male', 'female'];
-  defaultGender = this.genders[0];
-  defaultEmail = 'adarsh@gmail.com';
-  defaultPassword = 'adarsh@123';
+  createUserForm: FormGroup;
 
   constructor() {
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.createUserForm = new FormGroup({
+      'email': new FormControl('adarsh@gmail.com', [Validators.required, Validators.email]),
+      'password': new FormControl('adarsh@123'),
+      'gender': new FormControl(this.genders[0]),
+      'newsletter': new FormControl(true)
+    })
+  }
 
   handleFormSubmit(): void {
-    console.log(this.createUserForm);
-    console.log(this.createUserForm.value);
-    const {value: {email, password, newsletter}} = this.createUserForm;
-    console.log({email, password, newsletter});
+    console.log(this.createUserForm)
   }
 
 }
